@@ -5,6 +5,7 @@ import org.example.exception.WalletNotFoundException;
 import org.example.exception.WalletValidationException;
 import org.example.model.Wallet;
 import org.example.service.WalletManagement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class WalletManagementImpl implements WalletManagement {
 
     private WalletDao walletDao;
 
+    @Autowired
     public WalletManagementImpl(WalletDao walletDao) {
         this.walletDao = walletDao;
     }

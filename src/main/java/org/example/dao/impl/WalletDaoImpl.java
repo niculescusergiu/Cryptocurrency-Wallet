@@ -29,6 +29,6 @@ public class WalletDaoImpl implements WalletDao {
                 storage.stream()
                 .filter(wallet -> wallet.getId().equals(id))
                         .findFirst();
-        return Optional.empty();
+        return optionalWallet;
     }
 }

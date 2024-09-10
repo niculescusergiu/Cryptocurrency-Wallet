@@ -7,17 +7,19 @@ import org.example.model.Cryptocurrency;
 import org.example.model.Transaction;
 import org.example.model.Wallet;
 import org.example.service.TransactionManagement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+//@Component
 public class TransactionManagementImpl implements TransactionManagement {
     private WalletDao walletDao;
     private TransactionDao transactionDao;
 
+    @Autowired
     public TransactionManagementImpl(WalletDao walletDao, TransactionDao transactionDao) {
         this.walletDao = walletDao;
         this.transactionDao = transactionDao;
