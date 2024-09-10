@@ -1,10 +1,15 @@
 package org.example.service.impl;
 
 import org.example.dao.WalletDao;
+import org.example.exception.WalletNotFoundException;
 import org.example.exception.WalletValidationException;
 import org.example.model.Wallet;
 import org.example.service.WalletManagement;
+import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
+@Component
 public class WalletManagementImpl implements WalletManagement {
 
     private WalletDao walletDao;
@@ -23,7 +28,10 @@ public class WalletManagementImpl implements WalletManagement {
 
     @Override
     public Wallet getById(String id) {
-
-        return null;
+        Optional<Wallet> optionalWallet = walletDao.findWalletById(id);
+        if(optionalWallet.isPresent()) {
+            return optionalWallet.get();
+        }
+        throw new WalletNotFoundException("Wallet not found");
     }
 }
